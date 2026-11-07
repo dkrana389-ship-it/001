@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.callreport.app">
+
+    <!-- Permissions required by CallReport -->
+    <!-- 1. Detect phone state changes (IDLE, OFFHOOK, RINGING) -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    
+    <!-- 2. Read call history for today's duration and count calculations -->
+    <uses-permission android:name="android.permission.READ_CALL_LOG" />
+    
+    <!-- 3. Resolve caller number to contact display name -->
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    
+    <!-- 4. Post notifications for persistent foreground service (Android 13+ / API 33+) -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    
+    <!-- 5. Run continuous background listener for call events -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <!-- Android 14 (API 34) requires specific foreground service type -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_PHONE_CALL" />
+    
+    <!-- 6. Draw overlay / launch translucent popup over other apps as fallback -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    
+    <!-- 7. Request battery optimization exemption for background reliability -->
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+
+    <application
+        android:name=".CallReportApp"
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.CallReport">
+
+        <!-- Main Onboarding & Status Activity -->
+        <activity
+            android:name=".ui.OnboardingActivity"
+            android:exported="true"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Settings Screen (OEM Autostart & Battery Optimization) -->
+        <activity
+            android:name=".ui.SettingsActivity"
+            android:exported="false"
+            android:label="@string/settings_title"
+            android:screenOrientation="portrait" />
+
+        <!-- Dialog-Style Translucent Popup Activity -->
+        <!-- Theme.Translucent allows background apps or launcher to stay visible -->
+        <activity
+            android:name=".ui.PopupActivity"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:noHistory="true"
+            android:theme="@style/Theme.CallReport.TranslucentDialog"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+
+        <!-- CallScreeningService: Remembers the active number and allows call without blocking -->
+        <service
+            android:name=".service.CallScreeningServiceImpl"
+            android:exported="true"
+            android:permission="android.permission.BIND_SCREENING_SERVICE">
+            <intent-filter>
+                <action android:name="android.telecom.CallScreeningService" />
+            </intent-filter>
+        </service>
+
+        <!-- Foreground Service: Detects OFFHOOK -> IDLE state transition reliably -->
+        <service
+            android:name=".service.CallMonitorService"
+            android:exported="false"
+            android:foregroundServiceType="phoneCall" />
+
+    </application>
+
+</manifest>

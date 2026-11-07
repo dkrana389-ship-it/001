@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">CallReport</string>
+    <string name="settings_title">CallReport Settings</string>
+    <string name="call_back">Call Back</string>
+    <string name="close">Close</string>
+    <string name="unknown_caller">Unknown</string>
+    <string name="sponsor_ad">Sponsored Partner</string>
+    <string name="sponsor_title">Sponsored · Fast Recharge &amp; Deals</string>
+    <string name="sponsor_cta">Tap to Visit →</string>
+    <string name="auto_close_countdown">Closing in %1$ds</string>
+    <string name="privacy_badge">Calculated live from today\'s calls · Never stored or uploaded</string>
+</resources>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="320dp"
+    android:height="60dp"
+    android:viewportWidth="320"
+    android:viewportHeight="60">
+    <!-- Sponsor background rectangle -->
+    <path
+        android:fillColor="#0F172A"
+        android:pathData="M 12 0 L 308 0 A 12 12 0 0 1 320 12 L 320 48 A 12 12 0 0 1 308 60 L 12 60 A 12 12 0 0 1 0 48 L 0 12 A 12 12 0 0 1 12 0 Z" />
+    
+    <!-- Accent badge pill -->
+    <path
+        android:fillColor="#059669"
+        android:pathData="M 16 14 L 88 14 A 4 4 0 0 1 92 18 L 92 26 A 4 4 0 0 1 88 30 L 16 30 A 4 4 0 0 1 12 26 L 12 18 A 4 4 0 0 1 16 14 Z" />
+
+    <!-- Geometric accent shapes for modern direct sponsor look -->
+    <path
+        android:fillColor="#334155"
+        android:pathData="M 280 10 L 310 10 L 295 40 Z" />
+    <path
+        android:fillColor="#10B981"
+        android:pathData="M 292 25 L 305 25 L 298 48 Z" />
+</vector>

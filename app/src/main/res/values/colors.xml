@@ -1,0 +1,16 @@
+<resources>
+    <!-- Daylight Optimized High-Contrast Color Palette -->
+    <color name="primary">#0F172A</color>
+    <color name="primary_variant">#1E293B</color>
+    <color name="accent_green">#059669</color>
+    <color name="accent_green_light">#ECFDF5</color>
+    <color name="background_window">#F8FAFC</color>
+    <color name="background_card">#FFFFFF</color>
+    <color name="surface_muted">#F1F5F9</color>
+    <color name="text_primary">#0F172A</color>
+    <color name="text_secondary">#475569</color>
+    <color name="text_muted">#64748B</color>
+    <color name="border_light">#E2E8F0</color>
+    <color name="border_subtle">#CBD5E1</color>
+    <color name="sponsor_bg">#F8FAFC</color>
+</resources>
